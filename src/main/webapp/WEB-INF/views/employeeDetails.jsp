@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>EO: My Profile</title>
+<title>EO: ${employee.firstName} ${employee.lastName}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
@@ -19,21 +19,30 @@
 	<div id="wrapper">
 		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
 		<div id="content" class="clearfix">
-			<spring:url value="/app/myprofile/update" var="url" />
+			<spring:url value="/app/employeeDetails/update" var="url">
+				<spring:param name="employeeID" value="${employee.id}"></spring:param>
+			</spring:url>
 			<form:form action="${url}" method="post" commandName="employee">
 				<div id="col_1">
 					<h2 align="center">Actions</h2>
-					<ul id="subnav">
-						<li id="edit" class="visible"><input id="edit-button"
-							type="button" value="Edit" class="button" /></li>
-						<li id="save" class="invisible"><input id="save-button"
-							type="submit" value="Save" class="button" /></li>
-						<li id="cancel" class="invisible"><input id="cancel-button"
-							type="button" value="Cancel" class="button" /></li>
-					</ul>
+					<%
+						Object user = session.getAttribute("user");
+					%>
+					<c:if test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
+						<ul id="subnav">
+							<li id="edit" class="visible"><input id="edit-button"
+								type="button" value="Edit" class="button" /></li>
+							<li id="save" class="invisible"><input id="save-button"
+								type="submit" value="Save" class="button" /></li>
+							<li id="cancel" class="invisible"><input id="cancel-button"
+								type="button" value="Cancel" class="button" /></li>
+						</ul>
+					</c:if>
 				</div>
 				<div id="col_2">
-					<h1>My profile</h1>
+					<form:input path="id" value="${employee.id}" type="hidden"/>
+					<h1>Employee ${employee.firstName} ${employee.lastName}</h1>
+
 					<c:import url="employeeDetailsTable.jsp" charEncoding="UTF-8"></c:import>
 				</div>
 			</form:form>

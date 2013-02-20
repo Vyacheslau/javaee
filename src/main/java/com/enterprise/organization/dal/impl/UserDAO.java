@@ -1,4 +1,4 @@
-package com.enterprise.organization.dal;
+package com.enterprise.organization.dal.impl;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
@@ -38,6 +38,10 @@ public class UserDAO extends DAO implements IUserDAO {
 	@Override
 	public void updateUser(User user) {
 		getSession().update(user);
+	}
+	
+	public User getUser(Long id) {
+		return (User) getSession().get(User.class, id);
 	}
 
 	@Override

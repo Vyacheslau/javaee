@@ -1,4 +1,4 @@
-package com.enterprise.organization.dal;
+package com.enterprise.organization.dal.impl;
 
 import java.util.List;
 

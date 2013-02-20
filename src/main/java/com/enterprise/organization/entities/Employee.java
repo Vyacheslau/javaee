@@ -5,18 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee extends AbstractEntity {
 
 	@OneToOne
-	@JoinColumn(columnDefinition = "user_id", referencedColumnName = "ID", unique = true)
-	@Cascade(CascadeType.ALL)
+	@PrimaryKeyJoinColumn
 	private User user;
 
 	@Column(name = "first_name")
