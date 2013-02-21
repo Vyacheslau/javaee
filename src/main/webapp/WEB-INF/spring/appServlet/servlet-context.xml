@@ -27,6 +27,11 @@
 			<beans:bean
 				class="com.enterprise.organization.interceptors.OrganizationInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/app/actions/*" />
+			<beans:bean
+				class="com.enterprise.organization.interceptors.ActionsInterceptor" />
+		</interceptor>
 	</interceptors>
 
 	<beans:import resource="../../db/db-config.xml" />

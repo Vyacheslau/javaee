@@ -2,13 +2,11 @@ package com.enterprise.organization.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.User;
 
 /**
@@ -17,9 +15,6 @@ import com.enterprise.organization.entities.User;
 @Controller
 public class LoginController extends AbstractController {
 	
-	@Autowired
-	private IUserDAO userDAO;
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
@@ -52,6 +47,11 @@ public class LoginController extends AbstractController {
 	public String logout(HttpServletRequest req) {
 		req.getSession().removeAttribute("userID");
 		return "redirect:login";
+	}
+	
+	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+	public String acessDenied() {
+		return "accessDenied";
 	}
 	
 	@ModelAttribute("user")

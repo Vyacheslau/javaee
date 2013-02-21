@@ -31,8 +31,8 @@ public class UserDAO extends DAO implements IUserDAO {
 	}
 
 	@Override
-	public void createUser(User user) {
-		getSession().save(user);
+	public long createUser(User user) {
+		return (Long) getSession().save(user);
 	}
 
 	@Override

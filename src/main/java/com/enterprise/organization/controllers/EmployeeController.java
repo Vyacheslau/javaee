@@ -1,8 +1,9 @@
 package com.enterprise.organization.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.enterprise.organization.dal.idal.IEmployeeDAO;
 import com.enterprise.organization.entities.Department;
 import com.enterprise.organization.entities.Employee;
+import com.enterprise.organization.entities.User;
+import com.enterprise.organization.enums.UserRole;
+import com.enterprise.organization.utils.Config;
 
 @Controller
 @RequestMapping(value = "/app")
 public class EmployeeController extends AbstractController {
 
-	@Autowired
-	private IEmployeeDAO employeeDao;
-
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
 	public String employees(Model model) {
-		model.addAttribute("employeeList", employeeDao.getEmployeeList());
+		model.addAttribute("employeeList", employeeDAO.getEmployeeList());
 
 		return "employees";
 	}
@@ -31,7 +31,7 @@ public class EmployeeController extends AbstractController {
 	@RequestMapping(value = "/employeeDetails", method = RequestMethod.GET)
 	public String employeeDetails(@RequestParam long employeeID, Model model,
 			HttpServletRequest request) {
-		Employee employee = employeeDao.getEmployee(employeeID);
+		Employee employee = employeeDAO.getEmployee(employeeID);
 		model.addAttribute("employee", employee);
 
 		if (getUserFromSession(request).getId().equals(employeeID)) {
@@ -50,14 +50,51 @@ public class EmployeeController extends AbstractController {
 		} else {
 			employee.setManagerID(department.getDepartmentManagerID());
 		}
-		employeeDao.updateEmployee(employee);
-		
+		employeeDAO.updateEmployee(employee);
+
 		return "employeeDetails";
 	}
-	
-	@RequestMapping(value = "/hireNew", method = RequestMethod.POST)
-	public String getHireNewForm() {
+
+	@RequestMapping(value = "actions/hireNew", method = RequestMethod.GET)
+	public String getHireNewForm(Model model) {
+		List<Department> departmentList = departmaentDAO.getDepartmentList();
+		model.addAttribute("employee", new Employee());
+		model.addAttribute("departmentList", departmentList);
+
 		return "hireNewEmployee";
 	}
-	
+
+	@RequestMapping(value = "actions/addNewEmployee", method = RequestMethod.POST)
+	public String insertNewEmployee(@ModelAttribute Employee employee, Model model) {
+		User user = new User();
+		user.setLogin(employee.getFirstName() + "_" + employee.getLastName());		
+		user.setPassword(Config.getValue("def.password"));
+		user.setUserRole(String.valueOf(UserRole.EMPLOYEE));
+		user.setEmployee(employee);
+
+		Department department = employee.getDepartment();
+		if (department.getId() == null) {
+			employee.setDepartment(null);
+		} else {
+			employee.setManagerID(department.getDepartmentManagerID());
+		}
+
+		if (!(userDAO.isExist(user))) {
+			Long id = userDAO.createUser(user);
+			return "redirect:/app/employeeDetails/?employeeID=" + id;
+		} else {
+			model.addAttribute("employee", employee);
+			return "hireNewEmployeeError";
+		}
+	}
+
+	@RequestMapping(value = "actions/dismiss")
+	public String deleteEmployee(@ModelAttribute Employee employee,
+			@RequestParam long employeeID) {
+		User user = userDAO.getUser(employeeID);
+		userDAO.deleteUser(user);
+		
+		return "redirect:/app/employees";
+	}
+
 }

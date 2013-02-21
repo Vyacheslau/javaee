@@ -14,7 +14,7 @@ blockquote { width:80%; margin:20px auto; padding:0 26px;  background:#FFF url(.
 a img, :link img, :visited img { border: none; }
 img 				{ display: block; }
 a:link 				{ color: #C74848; text-decoration: underline; }
-a:visited 			{ color: #333; text-decoration: underline; }
+a:visited 			{ color: #C74848; text-decoration: underline; }
 a:hover, a:active 	{ color: #DB7C7C; }
 
 .alignright		{ text-align: right !important; }

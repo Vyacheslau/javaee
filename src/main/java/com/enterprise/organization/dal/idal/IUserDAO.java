@@ -6,7 +6,7 @@ public interface IUserDAO extends IDAO {
 
 	boolean checkCredantials(User user);
 
-	void createUser(User user);
+	long createUser(User user);
 
 	void updateUser(User user);
 	

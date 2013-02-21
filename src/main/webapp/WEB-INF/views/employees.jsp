@@ -22,8 +22,8 @@
 				<c:if
 					test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
 					<ul id="subnav">
-						<spring:url value="/app/hireNew" var="hireNew" />
-						<form:form action="${hireNew}">
+						<spring:url value="/app/actions/hireNew" var="hireNew" />
+						<form:form action="${hireNew}" method="get">
 							<li id="hire-new" class="visible"><input
 								id="hire-new-button" type="submit" value="Hire New"
 								class="button" /></li>
@@ -41,10 +41,13 @@
 						<td>Manager</td>
 						<td>Department</td>
 						<td>Job Title</td>
-						<td>Salary</td>
+						<td></td>
 					</tr>
 					<c:forEach var="employee" items="${employeeList}">
 						<spring:url value="/app/employeeDetails/" var="url">
+							<spring:param name="employeeID" value="${employee.id}"></spring:param>
+						</spring:url>
+						<spring:url value="/app/actions/dismiss" var="urlDismiss">
 							<spring:param name="employeeID" value="${employee.id}"></spring:param>
 						</spring:url>
 						<tr>
@@ -56,7 +59,10 @@
 							</td>
 							<td>${employee.department.departmentName}</td>
 							<td>${employee.jobTitle}</td>
-							<td>${employee.salary}</td>
+							<c:if
+								test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
+								<td><a href="${urlDismiss}">Dismiss</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</table>

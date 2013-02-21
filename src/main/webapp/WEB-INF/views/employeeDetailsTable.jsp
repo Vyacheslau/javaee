@@ -22,8 +22,8 @@
 	</tr>
 	<tr>
 		<td><form:label path="managerID">Manager: </form:label></td>
-		<td><form:input id="managerID" cssClass="input-disable"
-									path="managerID" type="text" value="${employee.managerID}" /></td>
+		<%-- <td><form:input id="managerID" cssClass="input-disable"
+									path="managerID" type="text" value="${employee.managerID}" /></td> --%>
 	</tr>
 	<tr>
 		<td><form:label path="department.departmentName">Department:</form:label></td>
@@ -52,9 +52,9 @@
 		<td><form:input id="salary" cssClass="input-disable"
 				path="salary" type="text" value="${employee.salary}" /></td>
 	</tr>
-	<%-- <tr>
-		<td><form:label path="password">Password: </form:label></td>
+	<tr>
+		<td><form:label path="user.password">Password: </form:label></td>
 		<td><form:input id="password" cssClass="input-disable"
-				path="password" type="password" value="${employee.password}" /></td>
-	</tr> --%>
+				path="user.password" type="password" value="${employee.user.password}" /></td>
+	</tr>
 </table>

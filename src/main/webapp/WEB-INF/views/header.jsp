@@ -18,5 +18,5 @@
 	<li><a href="http://web-mastery.info/">Summary</a></li>
 	<li><a href="http://web-mastery.info/">Departments</a></li>
 	<li><a href="/organization/app/employees">Employees</a></li>
-	<li><a href="../logout">Logout</a></li>
+	<li><a href="/organization/logout">Logout</a></li>
 </ul>

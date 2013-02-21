@@ -20,12 +20,14 @@
 		<c:import url="header.jsp" charEncoding="UTF-8"></c:import>
 		<div id="content" class="clearfix">
 			<spring:url value="/app/actions/addNewEmployee" var="url" />
-			<form:form  action="${url}" method="post" commandName="employee">
+			<form:form action="${url}" method="post" commandName="employee">
 				<div id="col_1">
 					<h2 align="center">Actions</h2>
 					<ul id="subnav">
 						<li id="hire" class="visible"><input id="hire-button"
 							type="submit" value="Hire" class="button" /></li>
+						<li id="error">Error: Employee with such First name and Last
+							Name is already present.</li>
 					</ul>
 				</div>
 				<div id="col_2">
