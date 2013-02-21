@@ -30,7 +30,6 @@ public class Employee extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "department_id", referencedColumnName = "id")
-	//@Cascade({ org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	private Department department;
 
 	@Column(name = "job_title")

@@ -5,6 +5,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <table id="employeeDetails">
+	<form:input path="id" type="hidden" value="${employee.id}" />
+	<%-- <form:input path="user.id" type="hidden" value="{$employee.user.id}" /> --%>
 	<tr>
 		<td><form:label path="firstName">First Name: </form:label></td>
 		<td><form:input id="firstName" cssClass="input-disable"
@@ -38,8 +40,8 @@
 				<form:options items="${departmentList}" itemValue="id"
 					itemLabel="departmentName" />
 				<c:forEach var="department" items="${departmentList}">
-										<form:option value="${department}">${department.departmentName}</form:option>
-									</c:forEach>
+					<form:option value="${department}">${department.departmentName}</form:option>
+				</c:forEach>
 			</form:select></td>
 	</tr>
 	<tr>
@@ -47,14 +49,19 @@
 		<td><form:input id="jobTitle" cssClass="input-disable"
 				path="jobTitle" type="text" value="${employee.jobTitle}" /></td>
 	</tr>
+	<c:if test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER' || user.employee.id eq employee.id}">
 	<tr>
 		<td><form:label path="salary">Salary: </form:label></td>
 		<td><form:input id="salary" cssClass="input-disable"
 				path="salary" type="text" value="${employee.salary}" /></td>
 	</tr>
-	<tr>
-		<td><form:label path="user.password">Password: </form:label></td>
-		<td><form:input id="password" cssClass="input-disable"
-				path="user.password" type="password" value="${employee.user.password}" /></td>
-	</tr>
+	</c:if>
+	<c:if test="${user.employee.id eq employee.id}">
+		<tr>
+			<td><form:label path="user.password">Password: </form:label></td>
+			<td><form:input id="password" cssClass="input-disable"
+					path="user.password" type="password"
+					value="${employee.user.password}" /></td>
+		</tr>
+	</c:if>
 </table>

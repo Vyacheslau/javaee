@@ -50,8 +50,8 @@ public class EmployeeController extends AbstractController {
 		} else {
 			employee.setManagerID(department.getDepartmentManagerID());
 		}
+		
 		employeeDAO.updateEmployee(employee);
-
 		return "employeeDetails";
 	}
 
@@ -81,7 +81,8 @@ public class EmployeeController extends AbstractController {
 
 		if (!(userDAO.isExist(user))) {
 			Long id = userDAO.createUser(user);
-			return "redirect:/app/employeeDetails/?employeeID=" + id;
+			user = userDAO.getUser(id);
+			return "redirect:/app/employeeDetails/?employeeID=" + user.getEmployee().getId();
 		} else {
 			model.addAttribute("employee", employee);
 			return "hireNewEmployeeError";
@@ -96,5 +97,4 @@ public class EmployeeController extends AbstractController {
 		
 		return "redirect:/app/employees";
 	}
-
 }

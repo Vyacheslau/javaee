@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enterprise.organization.dal.idal.IEmployeeDAO;
 import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.Employee;
 import com.enterprise.organization.entities.User;
@@ -21,6 +22,9 @@ public class CreateAdminService {
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IEmployeeDAO employeeDAO;
 
 	@PostConstruct
 	public void createAdmin() {
@@ -36,6 +40,7 @@ public class CreateAdminService {
 		
 		if(!(userDAO.isExist(user))) {
 			userDAO.createUser(user);
+			//employeeDAO.createEmployee(employee);
 		} else {
 			logger.info("User admin exists");
 		}
