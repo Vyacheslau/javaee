@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>EO: Employees</title>
+<title>EO: Departments</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
@@ -20,46 +20,41 @@
 				<c:if
 					test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
 					<ul id="subnav">
-						<spring:url value="/app/actions/hireNew" var="hireNew" />
+						<spring:url value="/app/actions/addNew" var="hireNew" />
 						<form:form action="${hireNew}" method="get">
-							<li id="hire-new" class="visible"><input
-								id="hire-new-button" type="submit" value="Hire New"
+							<li id="add-new" class="visible"><input
+								id="add-new-button" type="submit" value="Add New"
 								class="button" /></li>
 						</form:form>
 					</ul>
 				</c:if>
 			</div>
 			<div id="col_2">
-				<h1>Employees</h1>
-				<table id="employees">
+				<h1>Departments</h1>
+				<table id="departments">
 					<tr class="table-header">
 						<td>ID</td>
-						<td>First Name</td>
-						<td>Last Name</td>
-						<td>Manager</td>
-						<td>Department</td>
-						<td>Job Title</td>
+						<td>Department Name</td>
+						<td colspan="2">Manager</td>
+						<td>Description</td>
 						<td></td>
 					</tr>
-					<c:forEach var="employee" items="${employeeList}">
-						<spring:url value="/app/employeeDetails/" var="url">
-							<spring:param name="employeeID" value="${employee.id}"></spring:param>
+					<c:forEach var="department" items="${departmentList}">
+						<spring:url value="/app/departmentDetails/" var="url">
+							<spring:param name="departmentID" value="${department.id}"></spring:param>
 						</spring:url>
-						<spring:url value="/app/actions/dismiss" var="urlDismiss">
-							<spring:param name="employeeID" value="${employee.id}"></spring:param>
+						<spring:url value="/app/actions/deleteDepartment" var="urlDelete">
+							<spring:param name="departmentID" value="${department.id}"></spring:param>
 						</spring:url>
 						<tr>
-							<td><a href="${url}">${employee.id}</a></td>
-							<td>${employee.firstName}</td>
-							<td>${employee.lastName}</td>
-							<td>
-								<%-- ${employee.managerID} --%>
-							</td>
-							<td>${employee.department.departmentName}</td>
-							<td>${employee.jobTitle}</td>
+							<td><a href="${url}">${department.id}</a></td>
+							<td>${department.departmentName}</td>
+							<td>${department.departmentManagerID}</td>
+							<td>${department.departmentManagerID}</td>
+							<td>${department.description}</td>
 							<c:if
 								test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
-								<td><a href="${urlDismiss}">Dismiss</a></td>
+								<td><a href="${urlDelete}">Delete</a></td>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -70,4 +65,3 @@
 	</div>
 </body>
 </html>
-

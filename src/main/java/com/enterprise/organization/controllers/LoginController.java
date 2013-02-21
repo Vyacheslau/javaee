@@ -30,7 +30,7 @@ public class LoginController extends AbstractController {
 
 		if (userDAO.checkCredantials(user)) {
 			user = userDAO.getUserByLogin(user.getLogin());
-			request.getSession().setAttribute("user", user);
+			setUserToSession(request, user);
 			
 			return "redirect:../app/myprofile";
 		} else {

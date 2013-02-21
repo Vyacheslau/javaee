@@ -6,9 +6,11 @@ import com.enterprise.organization.entities.Department;
 
 public interface IDepartmentDAO extends IDAO {
 	
-	void createDepartment(Department department);
+	long createDepartment(Department department);
 
 	void updateDepartment(Department department);
+	
+	boolean isExist(Department department);
 
 	Department getDepartment(Long id);
 	

@@ -43,6 +43,8 @@ public class MyProfileController extends AbstractController {
 		user.setPassword(employee.getUser().getPassword());
 		
 		userDAO.updateUser(user);
+		user = userDAO.getUser(user.getId());
+		setUserToSession(request, user);
 		return "redirect:../myprofile";
 	}
 }

@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="/organization/resources/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
-	src="/organization/resources/scripts/editEmployee.js"></script>
+	src="/organization/resources/scripts/editEntity.js"></script>
 </head>
 <body>
 	<div id="wrapper">

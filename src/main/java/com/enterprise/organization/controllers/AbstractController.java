@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 
 import com.enterprise.organization.dal.idal.IDepartmentDAO;
@@ -25,10 +24,14 @@ public abstract class AbstractController {
 	protected IDepartmentDAO departmaentDAO;
 				
 	protected static final Logger logger = Logger.getLogger(AbstractController.class);
-	
+		
 	protected User getUserFromSession(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute("user");
 		return user;		
+	}
+	
+	protected void setUserToSession(HttpServletRequest request, User user) {
+		request.getSession().setAttribute("user", user);
 	}
 
 }

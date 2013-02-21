@@ -5,7 +5,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="footer">
-	<small>All content copyright &copy; 2013 Your Site, all rights
+	<small>All content copyright &copy; 2013 Enterprise Organization, all rights
 		reserved.<br /> Layout by <a href="http://cssweblayouts.com/"
 		target="_blank">CSS Web Layouts</a>
 	</small>

@@ -34,7 +34,7 @@ public class EmployeeController extends AbstractController {
 		Employee employee = employeeDAO.getEmployee(employeeID);
 		model.addAttribute("employee", employee);
 
-		if (getUserFromSession(request).getId().equals(employeeID)) {
+		if (getUserFromSession(request).getEmployee().getId().equals(employeeID)) {
 			return "forward:/app/myprofile";
 		} else {
 			return "employeeDetails";

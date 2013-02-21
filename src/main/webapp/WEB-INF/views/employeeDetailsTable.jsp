@@ -6,7 +6,6 @@
 
 <table id="employeeDetails">
 	<form:input path="id" type="hidden" value="${employee.id}" />
-	<%-- <form:input path="user.id" type="hidden" value="{$employee.user.id}" /> --%>
 	<tr>
 		<td><form:label path="firstName">First Name: </form:label></td>
 		<td><form:input id="firstName" cssClass="input-disable"
@@ -39,9 +38,6 @@
 					label="Select Department..."></form:option>
 				<form:options items="${departmentList}" itemValue="id"
 					itemLabel="departmentName" />
-				<c:forEach var="department" items="${departmentList}">
-					<form:option value="${department}">${department.departmentName}</form:option>
-				</c:forEach>
 			</form:select></td>
 	</tr>
 	<tr>

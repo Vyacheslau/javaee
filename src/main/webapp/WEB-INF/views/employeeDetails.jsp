@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="/organization/resources/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
-	src="/organization/resources/scripts/editEmployee.js"></script>
+	src="/organization/resources/scripts/editEntity.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -25,9 +25,6 @@
 			<form:form action="${url}" method="post" commandName="employee">
 				<div id="col_1">
 					<h2 align="center">Actions</h2>
-					<%
-						Object user = session.getAttribute("user");
-					%>
 					<c:if test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
 						<ul id="subnav">
 							<li id="edit" class="visible"><input id="edit-button"
@@ -40,8 +37,7 @@
 					</c:if>
 				</div>
 				<div id="col_2">
-					<form:input path="id" value="${employee.id}" type="hidden"/>
-					<h1>Employee ${employee.firstName} ${employee.lastName}</h1>
+					<h1>Employee: ${employee.firstName} ${employee.lastName}</h1>
 
 					<c:import url="employeeDetailsTable.jsp" charEncoding="UTF-8"></c:import>
 				</div>
