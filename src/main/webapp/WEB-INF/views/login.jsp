@@ -5,7 +5,7 @@
 <head>
 <title>Minisite Pro</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="assets/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/organization/resources/assets/css/common.css">
 </head>
 <body>
 	<div id="wrapper">
@@ -27,7 +27,7 @@
 						<li><input name="login" type="text" size=15 /></li>
 						<li>Password</li>
 						<li><input name="password" type="password" size=15 /></li>
-						<li><input type="submit" style="width: 125px; height: 20px" /></li>
+						<li><input type="submit" value="Login" style="width: 125px; height: 20px" /></li>
 					</ul>
 				</form>
 			</div>
