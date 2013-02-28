@@ -23,6 +23,8 @@ a:hover, a:active 	{ color: #DB7C7C; }
 
 .clear	{ clear: both;}
 
+.login-fields {width:95%;}
+
 .clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } 
 .clearfix 		{ display:inline-block; } 
 /*\*/ .clearfix { display:block; } /**/ 

@@ -28,9 +28,9 @@
 				<form:form action="${url}" method="post" commandName="user">
 					<ul id="subnav">
 						<li>Login</li>
-						<li><form:input id="login" type="text" size="15" path="login" /></li>
+						<li><form:input id="login" type="text" cssClass="login-fields" path="login" /></li>
 						<li>Password</li>
-						<li><form:input id="password" type="password" size="15" path="password" /></li>
+						<li><form:input id="password" type="password" cssClass="login-fields" path="password" /></li>
 						<li><input type="submit" value="Login"
 							style="width: 125px; height: 20px" /></li>
 					</ul>
