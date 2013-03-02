@@ -1,21 +1,21 @@
 package com.enterprise.organization.entities;
 
-public class Department {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	private long departmentID;
+@Entity
+@Table
+public class Department extends AbstractEntity {
+
+	@Column
 	private String departmentName;
+	
+	@Column
 	private long departmentManagerID;
 	
 	public Department() {
 		super();
-	}
-
-	public long getDepartmentID() {
-		return departmentID;
-	}
-
-	public void setDepartmentID(long departmentID) {
-		this.departmentID = departmentID;
 	}
 
 	public String getDepartmentName() {

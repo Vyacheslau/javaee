@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Minisite Pro</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="assets/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="/organization/resources/assets/css/common.css">
 </head>
 <body>
 	<div id="wrapper">
@@ -21,15 +24,17 @@
 		<div id="content" class="clearfix">
 			<div id="col_1">
 				<!-- <h2>Information</h2> -->
-				<form>
+				<spring:url value="/login/check" var="url" />
+				<form:form action="${url}" method="post" commandName="user">
 					<ul id="subnav">
 						<li>Login</li>
-						<li><input name="login" type="text" size=15 /></li>
+						<li><form:input id="login" type="text" cssClass="login-fields" path="login" /></li>
 						<li>Password</li>
-						<li><input name="password" type="password" size=15 /></li>
-						<li><input type="submit" style="width: 125px; height: 20px" /></li>
+						<li><form:input id="password" type="password" cssClass="login-fields" path="password" /></li>
+						<li><input type="submit" value="Login"
+							style="width: 125px; height: 20px" /></li>
 					</ul>
-				</form>
+				</form:form>
 			</div>
 			<div id="col_2">
 

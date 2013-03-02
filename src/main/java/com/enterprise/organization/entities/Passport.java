@@ -2,23 +2,25 @@ package com.enterprise.organization.entities;
 
 import java.util.Date;
 
-public class Passport {
-	
-	private long passportID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Passport extends AbstractEntity {
+
+	@Column
 	private String firstName;
-	private String lastName;
-	private Date birthDate;
 	
+	@Column
+	private String lastName;
+	
+	@Column
+	private Date birthDate;
+
 	public Passport() {
 		super();
-	}
-
-	public long getPassportID() {
-		return passportID;
-	}
-
-	public void setPassportID(long passportID) {
-		this.passportID = passportID;
 	}
 
 	public String getFirstName() {
