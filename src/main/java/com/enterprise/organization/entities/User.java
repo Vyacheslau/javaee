@@ -7,13 +7,13 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class User extends AbstractEntity {
-		
+	
 	@Column(unique=true)
 	private String login;
 	
 	@Column
 	private String password;
-
+	
 	public String getLogin() {
 		return login;
 	}
@@ -21,7 +21,7 @@ public class User extends AbstractEntity {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}

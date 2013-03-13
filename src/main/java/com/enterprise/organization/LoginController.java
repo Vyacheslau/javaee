@@ -1,11 +1,13 @@
 package com.enterprise.organization;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.enterprise.organization.dal.IUserService;
 import com.enterprise.organization.entities.User;
 
 /**
@@ -14,10 +16,19 @@ import com.enterprise.organization.entities.User;
 @Controller
 public class LoginController {
 	
+	@Autowired
+	private IUserService userdao;
+	
 	//private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 		
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {				
+	public String login() {	
+		/*User user = new User();
+		user.setLogin("admin");
+		user.setPassword("admin");
+		
+		userdao.createUser(user);*/
+		
 		return "login";
 	}
 	
@@ -26,11 +37,16 @@ public class LoginController {
 		return "redirect:login";
 	}
 	
-	@RequestMapping(value = "/login/check", method = RequestMethod.POST)
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String start(@ModelAttribute User user) {
 		
-		return "home";
+		/*if(userdao.checkLogin(user)) {
+			return "home";
+		} else {
+			return "login";
+		}	*/
 		
+		return "home";
 	}
 	
 	@ModelAttribute("user")
