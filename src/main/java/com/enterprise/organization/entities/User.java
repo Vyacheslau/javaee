@@ -2,17 +2,23 @@ package com.enterprise.organization.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class User extends AbstractEntity {
 	
-	@Column(unique=true)
+	@Column(name="login", unique=true)
 	private String login;
 	
-	@Column
+	@Column(name="password")
 	private String password;
+	
+	@OneToOne
+	@JoinColumn(columnDefinition = "employee_id", referencedColumnName = "ID")
+	private Employee employee;
 	
 	public String getLogin() {
 		return login;
@@ -30,4 +36,11 @@ public class User extends AbstractEntity {
 		this.password = password;
 	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 }

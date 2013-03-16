@@ -22,13 +22,9 @@ public class LoginController {
 	//private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 		
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {	
-		/*User user = new User();
-		user.setLogin("admin");
-		user.setPassword("admin");
-		
-		userdao.createUser(user);*/
-		
+	public String login() {
+		createAdmin();
+
 		return "login";
 	}
 	
@@ -52,6 +48,14 @@ public class LoginController {
 	@ModelAttribute("user")
 	public User populateUser() {
 		return new User();
+	}
+	
+	private void createAdmin() {
+		User user = new User();
+		user.setLogin("admin");
+		user.setPassword("admin");
+		
+		userdao.createUser(user);
 	}
 	
 }

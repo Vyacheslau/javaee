@@ -3,41 +3,43 @@ package com.enterprise.organization.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table
 public class Employee extends AbstractEntity {
 
-	@Column
-	private long managerID;
-	
+	@Column(name = "manager_id")
+	private Long managerID;
+
 	@ManyToOne
-	@JoinTable(name = "EMPLOYEE_DEPARTMENT", joinColumns = { @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID") }, inverseJoinColumns = { @JoinColumn(name = "DEPARTMENT_ID", referencedColumnName = "ID") })
+	@JoinColumn(name = "department_id", referencedColumnName = "id")
+	@Cascade({ org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	private Department department;
-	
+
 	@OneToOne
-	@JoinColumn(columnDefinition = "PASSPORT_ID", referencedColumnName = "ID")
+	@JoinColumn(columnDefinition = "passport_id", referencedColumnName = "id")
 	private Passport passport;
-	
-	@Column
-	private String jobTittle;
-	
-	@Column
-	private int salary;
+
+	@Column(name = "job_title")
+	private String jobTitle;
+
+	@Column(name = "salary")
+	private Integer salary;
 
 	public Employee() {
 		super();
 	}
 
-	public long getManagerID() {
+	public Long getManagerID() {
 		return managerID;
 	}
 
-	public void setManagerID(long managerID) {
+	public void setManagerID(Long managerID) {
 		this.managerID = managerID;
 	}
 
@@ -57,19 +59,19 @@ public class Employee extends AbstractEntity {
 		this.passport = passport;
 	}
 
-	public String getJobTittle() {
-		return jobTittle;
+	public String getJobTitle() {
+		return jobTitle;
 	}
 
-	public void setJobTittle(String jobTittle) {
-		this.jobTittle = jobTittle;
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
 	}
 
-	public int getSalary() {
+	public Integer getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
 }

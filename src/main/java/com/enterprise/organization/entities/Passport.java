@@ -5,18 +5,21 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table
 public class Passport extends AbstractEntity {
-
-	@Column
+	
+	@Column(name="first_name")
 	private String firstName;
 	
-	@Column
+	@Column(name="last_name")
 	private String lastName;
 	
-	@Column
+	@Column(name="birth_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthDate;
 
 	public Passport() {
