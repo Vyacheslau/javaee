@@ -1,17 +1,30 @@
 package com.enterprise.organization.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table
 public class Employee extends AbstractEntity {
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "birth_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date birthDate;
 
 	@Column(name = "manager_id")
 	private Long managerID;
@@ -21,10 +34,6 @@ public class Employee extends AbstractEntity {
 	@Cascade({ org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	private Department department;
 
-	@OneToOne
-	@JoinColumn(columnDefinition = "passport_id", referencedColumnName = "id")
-	private Passport passport;
-
 	@Column(name = "job_title")
 	private String jobTitle;
 
@@ -33,6 +42,30 @@ public class Employee extends AbstractEntity {
 
 	public Employee() {
 		super();
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public Long getManagerID() {
@@ -49,14 +82,6 @@ public class Employee extends AbstractEntity {
 
 	public void setDepartment(Department department) {
 		this.department = department;
-	}
-
-	public Passport getPassport() {
-		return passport;
-	}
-
-	public void setPassport(Passport passport) {
-		this.passport = passport;
 	}
 
 	public String getJobTitle() {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.enterprise.organization.dal.IUserService;
+import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.User;
 
 /**
@@ -17,7 +17,7 @@ import com.enterprise.organization.entities.User;
 public class LoginController {
 	
 	@Autowired
-	private IUserService userdao;
+	private IUserDAO userdao;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 		
