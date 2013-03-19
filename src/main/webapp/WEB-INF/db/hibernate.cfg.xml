@@ -7,7 +7,6 @@
     <session-factory>
         <mapping class="com.enterprise.organization.entities.User" />
         <mapping class="com.enterprise.organization.entities.Employee" />
-        <mapping class="com.enterprise.organization.entities.Passport" />
         <mapping class="com.enterprise.organization.entities.Department" />
     </session-factory>
 </hibernate-configuration>

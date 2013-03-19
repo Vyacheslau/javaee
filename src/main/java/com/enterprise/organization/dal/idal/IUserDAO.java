@@ -4,9 +4,7 @@ import com.enterprise.organization.entities.User;
 
 public interface IUserDAO extends IDAO {
 
-	boolean checkLogin(User user);
-
-	boolean checkPassword(User user);
+	boolean checkCredantials(User user);
 
 	void createUser(User user);
 

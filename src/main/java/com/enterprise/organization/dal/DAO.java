@@ -1,38 +1,46 @@
 package com.enterprise.organization.dal;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.enterprise.organization.dal.idal.IDAO;
 
+@Repository
+@Transactional
 public abstract class DAO implements IDAO {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	@Override
 	public Session getSession() {
-		// TODO Auto-generated method stub
-		return null;
+		Session currentSession = sessionFactory.getCurrentSession();		
+		return currentSession;
 	}
 
 	@Override
 	public void beginSession() {
-		// TODO Auto-generated method stub
+		getSession().beginTransaction();
 
 	}
 
 	@Override
 	public void commit() {
-		// TODO Auto-generated method stub
-
+		getSession().getTransaction().commit();
 	}
 
 	@Override
 	public void rollback() {
-		// TODO Auto-generated method stub
+		getSession().getTransaction().rollback();
 
 	}
 
 	@Override
 	public void closeSession() {
-		// TODO Auto-generated method stub
+		getSession().close();
 
 	}
 

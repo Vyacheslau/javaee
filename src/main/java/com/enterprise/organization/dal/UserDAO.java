@@ -1,37 +1,45 @@
 package com.enterprise.organization.dal;
 
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
+
 import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.User;
 
+@Component
 public class UserDAO extends DAO implements IUserDAO {
 
 	@Override
-	public boolean checkLogin(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean checkCredantials(User user) {
 
-	@Override
-	public boolean checkPassword(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		String login = user.getLogin();
+		String password = user.getPassword();
+
+		User user2 = (User) getSession().createCriteria(User.class)
+				.add(Restrictions.eq("login", login))
+				.add(Restrictions.eq("password", password)).uniqueResult();
+
+		if (user2 != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public void createUser(User user) {
-		// TODO Auto-generated method stub
-		
+		getSession().save(user);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		getSession().update(user);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+		getSession().delete(user);
+
 	}
+
 }
