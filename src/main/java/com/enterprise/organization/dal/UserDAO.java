@@ -2,11 +2,15 @@ package com.enterprise.organization.dal;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.User;
 
 @Component
+@Repository
+@Transactional
 public class UserDAO extends DAO implements IUserDAO {
 
 	@Override

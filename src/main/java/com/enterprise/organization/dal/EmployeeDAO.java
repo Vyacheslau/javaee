@@ -1,32 +1,35 @@
 package com.enterprise.organization.dal;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.enterprise.organization.dal.idal.IEmployeeDAO;
 import com.enterprise.organization.entities.Employee;
 
+@Component
+@Repository
+@Transactional
 public class EmployeeDAO extends DAO implements IEmployeeDAO {
 
 	@Override
 	public void createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-
+		getSession().save(employee);
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-
+		getSession().update(employee);
 	}
 
 	@Override
 	public void getEmployee(Long id) {
-		// TODO Auto-generated method stub
-
+		getSession().get(Employee.class, id);
 	}
 
 	@Override
 	public void deleteEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-
+		getSession().delete(employee);
 	}
 
 }

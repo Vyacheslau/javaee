@@ -1,32 +1,35 @@
 package com.enterprise.organization.dal;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.enterprise.organization.dal.idal.IDepartmentDAO;
 import com.enterprise.organization.entities.Department;
 
+@Component
+@Repository
+@Transactional
 public class DepartmentDAO extends DAO implements IDepartmentDAO {
 
 	@Override
 	public void createDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+		getSession().save(department);
 	}
 
 	@Override
 	public void updateDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+		getSession().update(department);
 	}
 
 	@Override
 	public void getDepartment(Long id) {
-		// TODO Auto-generated method stub
-
+		getSession().get(Department.class, id);
 	}
 
 	@Override
 	public void deleteDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+		getSession().delete(department);
 	}
 
 }
