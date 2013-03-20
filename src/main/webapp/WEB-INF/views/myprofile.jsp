@@ -30,11 +30,11 @@
 				</ul>
 			</div>
 			<div id="col_2">
-				<p class="floatright alignright">
+				<!-- <p class="floatright alignright">
 					<b>Page 1</b><br /> [ 1, <a href="http://web-mastery.info/">2</a>,
 					<a href="http://web-mastery.info/">3</a>, <a
 						href="http://web-mastery.info/">4</a> ]
-				</p>
+				</p> -->
 				<h1>Example Headline One</h1>
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 					Integer pede. Aliquam facilisis. Nulla gravida elit at eros. Nunc

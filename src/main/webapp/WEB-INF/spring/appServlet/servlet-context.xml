@@ -21,8 +21,16 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/*" />
+			<beans:bean
+				class="com.enterprise.organization.controllers.OrganizationInterceptor" />
+		</interceptor>
+	</interceptors>
+
 	<beans:import resource="../../db/db-config.xml" />
-	
+
 	<beans:bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="location"

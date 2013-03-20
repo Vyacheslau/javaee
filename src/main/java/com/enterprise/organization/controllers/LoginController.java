@@ -1,13 +1,11 @@
-package com.enterprise.organization;
+package com.enterprise.organization.controllers;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.enterprise.organization.dal.idal.IUserDAO;
 import com.enterprise.organization.entities.User;
 
 /**
@@ -16,10 +14,8 @@ import com.enterprise.organization.entities.User;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private IUserDAO userdao;
-
-	private static final Logger logger = Logger.getLogger(LoginController.class);
+	private static final Logger logger = Logger
+			.getLogger(LoginController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
@@ -36,21 +32,11 @@ public class LoginController {
 		return "loginError";
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public String start(@ModelAttribute User user) {
-
-		if (userdao.checkCredantials(user)) {
-			return "home";
-		} else {
-			return "redirect:loginError";
-		}
-	}
-	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout() {
 		return "login";
 	}
-
+	
 	@ModelAttribute("user")
 	public User populateUser() {
 		return new User();

@@ -20,7 +20,7 @@
 		<div id="content" class="clearfix">
 			<div id="col_1">
 				<!-- <h2>Information</h2> -->
-				<spring:url value="/home" var="url" />
+				<spring:url value="/myprofile" var="url" />
 				<form:form action="${url}" method="post" commandName="user">
 					<ul id="subnav">
 						<li>Login</li>
@@ -29,9 +29,8 @@
 						<li>Password</li>
 						<li><form:input id="password" type="password"
 								cssClass="login-fields" path="password" /></li>
-						<li><input type="submit" value="Login"
-							style="width: 125px; height: 20px" /></li>
-						<li id="error">There is no User with such login and password</li>
+						<li><input id="login-button" type="submit" value="Login" /></li>
+						<li id="error">Error: There is no User with such login and password.</li>
 					</ul>
 				</form:form>
 			</div>
