@@ -5,15 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>EO: Login</title>
+<title>EO: Login Error</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
 </head>
 <body>
 	<div id="wrapper">
-		<div id="header">
-			<!--<a href="index.htm"><img src="assets/images/logo_header.gif" alt="" width="203" height="102" class="logo" /></a> -->
+		<div id="header">	
 		</div>
 		<div id="nav">
 			<p>The best abilities to perform best practices</p>
@@ -32,6 +31,7 @@
 								cssClass="login-fields" path="password" /></li>
 						<li><input type="submit" value="Login"
 							style="width: 125px; height: 20px" /></li>
+						<li id="error">There is no User with such login and password</li>
 					</ul>
 				</form:form>
 			</div>

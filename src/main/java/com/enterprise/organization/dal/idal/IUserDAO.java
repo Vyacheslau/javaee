@@ -9,6 +9,8 @@ public interface IUserDAO extends IDAO {
 	void createUser(User user);
 
 	void updateUser(User user);
+	
+	boolean isExist(User user);
 
 	void deleteUser(User user);
 

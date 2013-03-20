@@ -41,9 +41,17 @@ public class UserDAO extends DAO implements IUserDAO {
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		getSession().delete(user);
-
+	public boolean isExist(User user) {
+		User user2 = (User) getSession().createCriteria(User.class).add(Restrictions.eq("login", user.getLogin())).uniqueResult();
+		if (user2 != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
+	@Override
+	public void deleteUser(User user) {
+		getSession().delete(user);
+	}
 }

@@ -6,15 +6,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table
+@Table(name = "EMPLOYEE")
 public class Employee extends AbstractEntity {
+
+	@OneToOne
+	@JoinColumn(columnDefinition = "user_id", referencedColumnName = "ID", unique = true)
+	@Cascade(CascadeType.ALL)
+	private User user;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -42,6 +49,14 @@ public class Employee extends AbstractEntity {
 
 	public Employee() {
 		super();
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getFirstName() {

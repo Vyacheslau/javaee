@@ -1,6 +1,6 @@
 package com.enterprise.organization;
 
-import org.hibernate.exception.ConstraintViolationException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,23 +19,21 @@ public class LoginController {
 	@Autowired
 	private IUserDAO userdao;
 
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = Logger.getLogger(LoginController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		try {
-			createAdmin();
-		} catch (ConstraintViolationException e) {
-			
-		} finally {
-			return "login";
-		}
+		return "login";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String slash() {
 		return "redirect:login";
+	}
+
+	@RequestMapping(value = "/loginError", method = RequestMethod.GET)
+	public String loginError() {
+		return "loginError";
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
@@ -44,21 +42,17 @@ public class LoginController {
 		if (userdao.checkCredantials(user)) {
 			return "home";
 		} else {
-			return "login";
+			return "redirect:loginError";
 		}
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout() {
+		return "login";
 	}
 
 	@ModelAttribute("user")
 	public User populateUser() {
 		return new User();
 	}
-
-	private void createAdmin() {
-		User user = new User();
-		user.setLogin("admin");
-		user.setPassword("admin");
-
-		userdao.createUser(user);
-	}
-
 }

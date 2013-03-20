@@ -6,8 +6,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
-@Table
+@Table(name="USER")
 public class User extends AbstractEntity {
 	
 	@Column(name="login", unique=true)
@@ -18,6 +21,7 @@ public class User extends AbstractEntity {
 	
 	@OneToOne
 	@JoinColumn(columnDefinition = "employee_id", referencedColumnName = "ID")
+	@Cascade(CascadeType.ALL)
 	private Employee employee;
 	
 	public String getLogin() {

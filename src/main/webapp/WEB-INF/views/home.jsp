@@ -5,22 +5,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Minisite Pro</title>
+<title>EO: Prfile</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
 </head>
 <body>
 	<div id="wrapper">
-		<div id="header">
-			<a href="index.htm"><img src="assets/images/logo_header.gif"
-				alt="" width="203" height="102" class="logo" /></a>
-		</div>
+		<div id="header"></div>
 		<ul id="nav">
-			<li><a href="http://web-mastery.info/">Example One</a></li>
-			<li><a href="http://web-mastery.info/">Example Two</a></li>
-			<li><a href="http://web-mastery.info/">Example Three</a></li>
-			<li><a href="http://web-mastery.info/">Example Four</a></li>
+			<li><a href="http://web-mastery.info/">My Profile</a></li>
+			<li><a href="http://web-mastery.info/">Summary</a></li>
+			<li><a href="http://web-mastery.info/">Departments</a></li>
+			<li><a href="http://web-mastery.info/">Employees</a></li>
+			<li><a href="./logout">Logout</a></li>
 		</ul>
 		<div id="content" class="clearfix">
 			<div id="col_1">
