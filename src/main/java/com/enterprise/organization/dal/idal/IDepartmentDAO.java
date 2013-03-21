@@ -8,7 +8,7 @@ public interface IDepartmentDAO extends IDAO {
 
 	void updateDepartment(Department department);
 
-	void getDepartment(Long id);
+	Department getDepartment(Long id);
 
 	void deleteDepartment(Department department);
 

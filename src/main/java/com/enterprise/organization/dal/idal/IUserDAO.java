@@ -10,6 +10,8 @@ public interface IUserDAO extends IDAO {
 
 	void updateUser(User user);
 	
+	User getUserByLogin(String login);
+	
 	boolean isExist(User user);
 
 	void deleteUser(User user);

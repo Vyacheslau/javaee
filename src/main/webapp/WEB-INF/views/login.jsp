@@ -21,7 +21,7 @@
 		<div id="content" class="clearfix">
 			<div id="col_1">
 				<!-- <h2>Information</h2> -->
-				<spring:url value="/myprofile" var="url" />
+				<spring:url value="/login/check" var="url" />
 				<form:form action="${url}" method="post" commandName="user">
 					<ul id="subnav">
 						<li>Login</li>
@@ -30,7 +30,7 @@
 						<li>Password</li>
 						<li><form:input id="password" type="password"
 								cssClass="login-fields" path="password" /></li>
-						<li><input id="login-button" type="submit" value="Login" /></li>
+						<li><input id="button" type="submit" value="Login" /></li>
 					</ul>
 				</form:form>
 			</div>

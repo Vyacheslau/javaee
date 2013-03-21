@@ -41,8 +41,16 @@ public class UserDAO extends DAO implements IUserDAO {
 	}
 
 	@Override
+	public User getUserByLogin(String login) {
+		User user = (User) getSession().createCriteria(User.class)
+				.add(Restrictions.eq("login", login)).uniqueResult();
+		return user;
+	}
+
+	@Override
 	public boolean isExist(User user) {
-		User user2 = (User) getSession().createCriteria(User.class).add(Restrictions.eq("login", user.getLogin())).uniqueResult();
+		User user2 = (User) getSession().createCriteria(User.class)
+				.add(Restrictions.eq("login", user.getLogin())).uniqueResult();
 		if (user2 != null) {
 			return true;
 		} else {

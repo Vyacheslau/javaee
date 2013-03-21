@@ -1,5 +1,6 @@
 package com.enterprise.organization.dal;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,10 +24,10 @@ public class EmployeeDAO extends DAO implements IEmployeeDAO {
 	}
 
 	@Override
-	public void getEmployee(Long id) {
-		getSession().get(Employee.class, id);
+	public Employee getEmployee(Long id) {
+		return (Employee) getSession().get(Employee.class, id);
 	}
-
+		
 	@Override
 	public void deleteEmployee(Employee employee) {
 		getSession().delete(employee);

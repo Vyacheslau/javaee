@@ -52,7 +52,7 @@ h3		{ font-size: 16px; color: #666; }
 #subnav, #subnav ul { margin:0; padding:0; list-style:none; }
 #subnav li {color: #C74848; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 #subnav li a { display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
-#subnav li #login-button {width:125px; display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
+#subnav li #button {width:125px; display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 #subnav li a:hover { background:#E9D1D1 url(../images/bg_left_nav_on.gif) no-repeat 100% 0; text-decoration:none; }
 #error {color: #C74848; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 #content #col_2 { width:80%; float:left; }
@@ -63,3 +63,6 @@ h3		{ font-size: 16px; color: #666; }
 .t_form { margin:20px; }
 .t_form th { background:#efefef; }
 .t_form td, .t_form th { padding:5px; border-bottom:1px solid #666; }
+
+.input-enable {readonly:false}
+.input-disable {readonly:true}

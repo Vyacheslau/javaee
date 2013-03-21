@@ -23,7 +23,7 @@
 
 	<interceptors>
 		<interceptor>
-			<mapping path="/*" />
+			<mapping path="/app/*" />
 			<beans:bean
 				class="com.enterprise.organization.controllers.OrganizationInterceptor" />
 		</interceptor>

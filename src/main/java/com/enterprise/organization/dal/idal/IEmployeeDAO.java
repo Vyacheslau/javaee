@@ -8,8 +8,8 @@ public interface IEmployeeDAO extends IDAO {
 
 	void updateEmployee(Employee employee);
 
-	void getEmployee(Long id);
-
+	Employee getEmployee(Long id);
+		
 	void deleteEmployee(Employee employee);
 	
 }

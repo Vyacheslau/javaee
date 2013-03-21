@@ -27,12 +27,15 @@ public class OrganizationInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1,
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
-		// TODO Auto-generated method stub
 		
-		logger.info("+++++++++++++++++++++++Interseptor prehandle");
+		Object user = request.getSession().getAttribute("user");
+		if(user == null) {
+			response.sendRedirect("../login");
+		}
 		return true;
+		
 	}
 
 }

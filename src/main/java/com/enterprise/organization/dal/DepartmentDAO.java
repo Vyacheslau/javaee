@@ -23,8 +23,8 @@ public class DepartmentDAO extends DAO implements IDepartmentDAO {
 	}
 
 	@Override
-	public void getDepartment(Long id) {
-		getSession().get(Department.class, id);
+	public Department getDepartment(Long id) {
+		return (Department) getSession().get(Department.class, id);
 	}
 
 	@Override
