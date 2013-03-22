@@ -29,7 +29,7 @@
 						<li>Password</li>
 						<li><form:input id="password" type="password"
 								cssClass="login-fields" path="password" /></li>
-						<li><input id="button" type="submit" value="Login" /></li>
+						<li><input id="login" type="submit" value="Login" class="button" /></li>
 						<li id="error">Error: There is no User with such login and password.</li>
 					</ul>
 				</form:form>
