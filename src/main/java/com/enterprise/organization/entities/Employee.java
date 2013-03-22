@@ -1,15 +1,11 @@
 package com.enterprise.organization.entities;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -30,15 +26,14 @@ public class Employee extends AbstractEntity {
 	private String lastName;
 
 	@Column(name = "birth_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date birthDate;
+	private String birthDate;
 
 	@Column(name = "manager_id")
 	private Long managerID;
 
 	@ManyToOne
 	@JoinColumn(name = "department_id", referencedColumnName = "id")
-	@Cascade({ org.hibernate.annotations.CascadeType.SAVE_UPDATE })
+	//@Cascade({ org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	private Department department;
 
 	@Column(name = "job_title")
@@ -75,11 +70,11 @@ public class Employee extends AbstractEntity {
 		this.lastName = lastName;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

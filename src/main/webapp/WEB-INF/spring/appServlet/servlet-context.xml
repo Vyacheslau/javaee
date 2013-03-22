@@ -25,7 +25,7 @@
 		<interceptor>
 			<mapping path="/app/*" />
 			<beans:bean
-				class="com.enterprise.organization.controllers.OrganizationInterceptor" />
+				class="com.enterprise.organization.interceptors.OrganizationInterceptor" />
 		</interceptor>
 	</interceptors>
 

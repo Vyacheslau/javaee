@@ -1,5 +1,7 @@
 package com.enterprise.organization.dal;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +30,13 @@ public class DepartmentDAO extends DAO implements IDepartmentDAO {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
+	public List<Department> getDepartmentList() {
+		return getSession().createCriteria(Department.class).list();
+	}
+
+	@Override
 	public void deleteDepartment(Department department) {
 		getSession().delete(department);
 	}
-
 }

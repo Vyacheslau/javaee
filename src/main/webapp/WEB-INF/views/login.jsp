@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +31,8 @@
 						<li>Password</li>
 						<li><form:input id="password" type="password"
 								cssClass="login-fields" path="password" /></li>
-						<li><input id="login" type="submit" value="Login" class="button" /></li>
+						<li><input id="login" type="submit" value="Login"
+							class="button" /></li>
 					</ul>
 				</form:form>
 			</div>
@@ -46,12 +48,7 @@
 					Vyacheslau Karachun and contains several useful features.</blockquote>
 			</div>
 		</div>
-		<div id="footer">
-			<small>All content copyright &copy; 2013 Enterprise
-				Organization, all rights reserved.<br /> Layout by <a
-				href="http://cssweblayouts.com/" target="_blank">CSS Web Layouts</a>
-			</small>
-		</div>
+		<c:import url="footer.jsp" charEncoding="UTF-8"></c:import>
 	</div>
 </body>
 </html>

@@ -30,6 +30,8 @@ $(document).ready(function() {
 				$(this).addClass('input-enable');
 				$(this).attr('data-remember', $(this).val());
 			});
+			$('#department').css({'display' : 'none'});
+			$('#department-select').css({'display' : ''});
 			
 			document.getElementById("edit").className = "invisible";
 			document.getElementById("save").className = "visible";
@@ -46,6 +48,8 @@ $(document).ready(function() {
 					$(this).attr('border', '');
 					$(this).val($(this).attr('data-remember'));
 				});
+				$('#department').css({'display' : ''});
+				$('#department-select').css({'display' : 'none'});
 			});
 		});
 	});

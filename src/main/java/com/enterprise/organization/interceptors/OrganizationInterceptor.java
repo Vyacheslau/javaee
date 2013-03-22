@@ -1,4 +1,4 @@
-package com.enterprise.organization.controllers;
+package com.enterprise.organization.interceptors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.enterprise.organization.controllers.LoginController;
 
 public class OrganizationInterceptor implements HandlerInterceptor {
 
@@ -33,8 +35,10 @@ public class OrganizationInterceptor implements HandlerInterceptor {
 		Object user = request.getSession().getAttribute("user");
 		if(user == null) {
 			response.sendRedirect("../login");
+			return false;
+		} else {
+			return true;
 		}
-		return true;
 		
 	}
 
