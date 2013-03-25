@@ -2,7 +2,6 @@ package com.enterprise.organization.utils;
 
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Config {
 	
-	private static final Logger logger = Logger.getLogger(Config.class);
 	private static MessageSource messageSource;
 
 	@Autowired

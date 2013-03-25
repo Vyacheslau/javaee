@@ -4,11 +4,19 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<div id="header"></div>
-		<ul id="nav">
-			<li><a href="/organization/app/myprofile">My Profile</a></li>
-			<li><a href="http://web-mastery.info/">Summary</a></li>
-			<li><a href="http://web-mastery.info/">Departments</a></li>
-			<li><a href="/organization/app/employees">Employees</a></li>
-			<li><a href="../logout">Logout</a></li>
-		</ul>
+<%
+	Object user = session.getAttribute("user");
+%>
+
+<div id="header">
+	<div id="user">
+		User '<c:out value="${user.login}" />' logged in
+	</div>
+</div>
+<ul id="nav">
+	<li><a href="/organization/app/myprofile">My Profile</a></li>
+	<li><a href="http://web-mastery.info/">Summary</a></li>
+	<li><a href="/organization/app/departments">Departments</a></li>
+	<li><a href="/organization/app/employees">Employees</a></li>
+	<li><a href="/organization/logout">Logout</a></li>
+</ul>

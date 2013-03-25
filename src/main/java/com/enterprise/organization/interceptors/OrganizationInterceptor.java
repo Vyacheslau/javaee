@@ -3,16 +3,10 @@ package com.enterprise.organization.interceptors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.enterprise.organization.controllers.LoginController;
-
 public class OrganizationInterceptor implements HandlerInterceptor {
-
-	private static final Logger logger = Logger
-			.getLogger(LoginController.class);
 
 	@Override
 	public void afterCompletion(HttpServletRequest arg0,

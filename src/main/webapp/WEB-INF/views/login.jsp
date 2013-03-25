@@ -13,9 +13,7 @@
 </head>
 <body>
 	<div id="wrapper">
-		<div id="header">
-			<!--<a href="index.htm"><img src="assets/images/logo_header.gif" alt="" width="203" height="102" class="logo" /></a> -->
-		</div>
+		<div id="header"></div>
 		<div id="nav">
 			<p>The best abilities to perform best practices</p>
 		</div>

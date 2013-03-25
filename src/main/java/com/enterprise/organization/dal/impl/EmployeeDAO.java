@@ -1,4 +1,4 @@
-package com.enterprise.organization.dal;
+package com.enterprise.organization.dal.impl;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class EmployeeDAO extends DAO implements IEmployeeDAO {
 	public Employee getEmployee(Long id) {
 		return (Employee) getSession().get(Employee.class, id);
 	}
-	
+		
 	@SuppressWarnings("unchecked")
 	public List<Employee> getEmployeeList() {
 		return getSession().createCriteria(Employee.class).list();

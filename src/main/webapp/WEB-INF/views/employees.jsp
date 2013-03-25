@@ -10,10 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
-<script type="text/javascript"
-	src="/organization/resources/scripts/jquery-1.9.1.min.js"></script>
-<!-- <script type="text/javascript"
-	src="/organization/resources/scripts/editEmployee.js"></script> -->
 </head>
 <body>
 	<div id="wrapper">
@@ -21,28 +17,39 @@
 		<div id="content" class="clearfix">
 			<div id="col_1">
 				<h2 align="center">Actions</h2>
-				<ul id="subnav">
-					<li id="edit" class="visible"><input id="edit-button"
-						type="button" value="Hire New" class="button" /></li>
-					<!-- <li id="save" class="invisible"><input id="save-button"
-						type="submit" value="Save" class="button" /></li>
-					<li id="cancel" class="invisible"><input id="cancel-button"
-						type="button" value="Cancel" class="button" /></li> -->
-				</ul>
+				<c:if
+					test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
+					<ul id="subnav">
+						<spring:url value="/app/actions/hireNew" var="hireNew" />
+						<form:form action="${hireNew}" method="get">
+							<li id="hire-new" class="visible"><input
+								id="hire-new-button" type="submit" value="Hire New"
+								class="button" /></li>
+						</form:form>
+					</ul>
+				</c:if>
 			</div>
 			<div id="col_2">
 				<h1>Employees</h1>
 				<table id="employees">
 					<tr class="table-header">
+						<td>ID</td>
 						<td>First Name</td>
 						<td>Last Name</td>
 						<td>Manager</td>
 						<td>Department</td>
 						<td>Job Title</td>
-						<td>Salary</td>
+						<td></td>
 					</tr>
 					<c:forEach var="employee" items="${employeeList}">
+						<spring:url value="/app/employeeDetails/" var="url">
+							<spring:param name="employeeID" value="${employee.id}"></spring:param>
+						</spring:url>
+						<spring:url value="/app/actions/dismiss" var="urlDismiss">
+							<spring:param name="employeeID" value="${employee.id}"></spring:param>
+						</spring:url>
 						<tr>
+							<td><a href="${url}">${employee.id}</a></td>
 							<td>${employee.firstName}</td>
 							<td>${employee.lastName}</td>
 							<td>
@@ -50,7 +57,10 @@
 							</td>
 							<td>${employee.department.departmentName}</td>
 							<td>${employee.jobTitle}</td>
-							<td>${employee.salary}</td>
+							<c:if
+								test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
+								<td><a href="${urlDismiss}">Dismiss</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</table>

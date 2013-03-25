@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>EO: Login Error</title>
+<title>EO: Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css"
 	href="/organization/resources/assets/css/common.css">
@@ -19,7 +19,6 @@
 		</div>
 		<div id="content" class="clearfix">
 			<div id="col_1">
-				<!-- <h2>Information</h2> -->
 				<spring:url value="/login/check" var="url" />
 				<form:form action="${url}" method="post" commandName="user">
 					<ul id="subnav">
