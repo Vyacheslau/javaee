@@ -22,15 +22,14 @@
 				path="birthDate" type="text" value="${employee.birthDate}" /></td>
 	</tr>
 	<tr>
-		<td><form:label path="managerID">Manager: </form:label></td>
-		<%-- <td><form:input id="managerID" cssClass="input-disable"
-									path="managerID" type="text" value="${employee.managerID}" /></td> --%>
+		<td>Manager:</td>
+		<td><c:out value="${employee.department.manager.firstName}" /> <c:out value="${employee.department.manager.lastName}" /></td>
 	</tr>
 	<tr>
 		<td><form:label path="department.departmentName">Department:</form:label></td>
 		<td><form:input id="department" cssClass="input-disable"
 				path="department.departmentName" type="text"
-				value="${employee.department.departmentName}" /> <form:select
+				value="${employee.department.departmentName}" /> <form:select title="If you choose the 'Select Department...' then the Department value will stay as is."
 				cssClass="input-enable" cssStyle="display:none"
 				id="department-select" path="department.id">
 

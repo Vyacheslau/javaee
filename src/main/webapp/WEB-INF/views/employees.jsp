@@ -52,9 +52,8 @@
 							<td><a href="${url}">${employee.id}</a></td>
 							<td>${employee.firstName}</td>
 							<td>${employee.lastName}</td>
-							<td>
-								<%-- ${employee.managerID} --%>
-							</td>
+							<td>${employee.department.manager.firstName}
+								${employee.department.manager.lastName}</td>
 							<td>${employee.department.departmentName}</td>
 							<td>${employee.jobTitle}</td>
 							<c:if

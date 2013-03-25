@@ -17,31 +17,30 @@ import com.enterprise.organization.entities.User;
 @Controller
 @RequestMapping(value = "/app")
 public class MyProfileController extends AbstractController {
-		
+
 	@RequestMapping(value = "/myprofile", method = RequestMethod.GET)
-	public String start(Model model, HttpServletRequest request) {		
+	public String start(Model model, HttpServletRequest request) {
 		Employee employee = getUserFromSession(request).getEmployee();
-		
-		List <Department> departmentList = departmaentDAO.getDepartmentList();
+
+		List<Department> departmentList = departmaentDAO.getDepartmentList();
 		model.addAttribute("employee", employee);
 		model.addAttribute("departmentList", departmentList);
 
 		return "myprofile";
 	}
-	
+
 	@RequestMapping(value = "/myprofile/update", method = RequestMethod.POST)
-	public String updateEmployee(@ModelAttribute Employee employee, HttpServletRequest request) {
+	public String updateEmployee(@ModelAttribute Employee employee,
+			HttpServletRequest request) {
 		Department department = employee.getDepartment();
 		if (department.getId() == null) {
 			employee.setDepartment(null);
-		} else {
-			employee.setManagerID(department.getDepartmentManagerID());
 		}
-		
+
 		User user = getUserFromSession(request);
 		user.setEmployee(employee);
 		user.setPassword(employee.getUser().getPassword());
-		
+
 		userDAO.updateUser(user);
 		user = userDAO.getUser(user.getId());
 		setUserToSession(request, user);

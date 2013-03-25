@@ -5,26 +5,28 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table
 public class Department extends AbstractEntity {
 
-	@Column(name="department_name")
+	@Column(name = "department_name")
 	private String departmentName;
-	
-	@Column(name="department_manager_id")
-	private long departmentManagerID;
-	
+
+	@ManyToOne
+	@JoinColumn(name="manager_id")
+	private Employee manager;
+
 	@Column
 	private String description;
-	
+
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
 	private List<Employee> employees;
-	
+
 	public Department() {
 		super();
 	}
@@ -37,12 +39,12 @@ public class Department extends AbstractEntity {
 		this.departmentName = departmentName;
 	}
 
-	public long getDepartmentManagerID() {
-		return departmentManagerID;
+	public Employee getManager() {
+		return manager;
 	}
 
-	public void setDepartmentManagerID(long departmentManagerID) {
-		this.departmentManagerID = departmentManagerID;
+	public void setManager(Employee manager) {
+		this.manager = manager;
 	}
 
 	public String getDescription() {

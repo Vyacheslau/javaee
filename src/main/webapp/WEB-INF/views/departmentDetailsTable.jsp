@@ -14,10 +14,17 @@
 				value="${department.departmentName}" /></td>
 	</tr>
 	<tr>
-		<td><form:label path="departmentManagerID">Manager: </form:label></td>
-		<td><form:input id="departmentManagerID" cssClass="input-disable"
-				path="departmentManagerID" type="text"
-				value="${department.departmentManagerID}" /></td>
+		<td><form:label path="manager.user.login">Manager: </form:label></td>
+		<td><form:input id="manager" cssClass="input-disable"
+				path="manager.user.login" type="text"
+				value="${department.manager.user.login}" />
+		<form:select cssClass="input-enable" cssStyle="display:none"
+				id="manager-select" path="manager.id">
+				<form:option label="Select Manager..." value="1"></form:option>
+				<c:forEach items="${employeeList}" var="empl" begin="1">
+					<form:option label="${empl.user.login}" value="${empl.id}"></form:option>
+				</c:forEach>
+			</form:select></td>
 	</tr>
 	<tr>
 		<td><form:label path="description">Description: </form:label></td>

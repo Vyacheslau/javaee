@@ -25,9 +25,6 @@ public class Employee extends AbstractEntity {
 	@Column(name = "birth_date")
 	private String birthDate;
 
-	@Column(name = "manager_id")
-	private Long managerID;
-
 	@ManyToOne
 	@JoinColumn(name = "department_id", referencedColumnName = "id")
 	private Department department;
@@ -72,14 +69,6 @@ public class Employee extends AbstractEntity {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public Long getManagerID() {
-		return managerID;
-	}
-
-	public void setManagerID(Long managerID) {
-		this.managerID = managerID;
 	}
 
 	public Department getDepartment() {

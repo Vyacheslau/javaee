@@ -22,15 +22,20 @@
 					<ul id="subnav">
 						<spring:url value="/app/actions/addNew" var="hireNew" />
 						<form:form action="${hireNew}" method="get">
-							<li id="add-new" class="visible"><input
-								id="add-new-button" type="submit" value="Add New"
-								class="button" /></li>
+							<li id="add-new" class="visible"><input id="add-new-button"
+								type="submit" value="Add New" class="button" /></li>
 						</form:form>
 					</ul>
 				</c:if>
 			</div>
 			<div id="col_2">
 				<h1>Departments</h1>
+				<h4 id="errorMessage">
+					Error: Department with assigned Employees cannot be deleted. Please
+					assign employees from
+					<c:out value="${departmentWithEmployees.departmentName}" />
+					to other Departments.
+				</h4>
 				<c:import url="departmentsTable.jsp" charEncoding="UTF-8"></c:import>
 			</div>
 		</div>

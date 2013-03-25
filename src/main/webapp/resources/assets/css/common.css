@@ -56,7 +56,7 @@ h3		{ font-size: 16px; color: #666; }
 #subnav li a { display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 /* #subnav li .button {width:125px; display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none } */
 #subnav li a:hover { background:#E9D1D1 url(../images/bg_left_nav_on.gif) no-repeat 100% 0; text-decoration:none; }
-#error {color: #C74848; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
+li #error {color: #C74848; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 #content #col_2 { width:80%; float:left; }
 #content #col_2 table {margin: 20}
 #content #col_2 table tr td {padding:10px; height:1%; }
@@ -72,3 +72,4 @@ h3		{ font-size: 16px; color: #666; }
 .input-enable {width:300px}
 .button {width:125px; display:block; padding:5px 10px 5px 10px; height:1%; background:url(../images/bg_subnav.gif) no-repeat 100% 100%; text-decoration:none }
 .table-header {font-weight:bold; font-size: 20px; color: #666; text-align: center; }
+#errorMessage {color: #C74848;}

@@ -17,7 +17,7 @@
 		<div id="content" class="clearfix">
 			<div id="col_1">
 				<h2 align="center">Actions</h2>
-				<c:if
+				<%-- <c:if
 					test="${user.userRole eq 'ADMIN' || user.userRole eq 'MANAGER'}">
 					<ul id="subnav">
 						<spring:url value="/app/actions/addNew" var="hireNew" />
@@ -27,11 +27,36 @@
 								class="button" /></li>
 						</form:form>
 					</ul>
-				</c:if>
+				</c:if> --%>
 			</div>
 			<div id="col_2">
-				<h1>Departments</h1>
-				<c:import url="departmentsTable.jsp" charEncoding="UTF-8"></c:import>
+				<h1>Summary</h1>
+
+				<table id="summary">
+					<tr class="table-header">
+						<td>Department Name</td>
+						<td colspan="2">Manager</td>
+						<td colspan="3">First Name</td>
+					</tr>
+					<c:forEach var="department" items="${departmentList}">
+						<spring:url value="/app/departmentDetails/" var="url">
+							<spring:param name="departmentID" value="${department.id}"></spring:param>
+						</spring:url>
+						<tr>
+							<td><a href="${url}">${department.departmentName}</a></td>
+							<td>${department.manager.firstName}
+								${department.manager.lastName}</td>
+							<td>${department.manager.jobTitle}</td>
+
+							<c:forEach var="employee" items="${department.employees}">
+								<td>${employee.firstName}</td>
+								<td>${employee.lastName}</td>
+								<td>${employee.jobTitle}</td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</table>
+
 			</div>
 		</div>
 		<c:import url="footer.jsp" charEncoding="UTF-8"></c:import>

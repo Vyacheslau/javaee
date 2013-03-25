@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('input.input-disable').each(function() {
+	$('.input-disable').each(function() {
 		$(this).attr('disabled', 'disabled');
 		$("#edit-button").click(function() {
 			$('.input-disable').each(function() {
@@ -8,6 +8,9 @@ $(document).ready(function() {
 				input.toggleClass('input-disable input-enable');
 				input.attr('data-remember', input.val());
 			});
+			
+			$('#manager').hide();
+			$('#manager-select').show();
 			
 						
 			$('#edit').hide();
@@ -26,6 +29,9 @@ $(document).ready(function() {
 					input.attr('border', '');
 					input.val(input.attr('data-remember'));
 				});
+				
+				$('#manager').show();
+				$('#manager-select').hide();
 				
 			});
 		});

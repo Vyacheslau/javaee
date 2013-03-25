@@ -31,10 +31,13 @@ public class EmployeeController extends AbstractController {
 	@RequestMapping(value = "/employeeDetails", method = RequestMethod.GET)
 	public String employeeDetails(@RequestParam long employeeID, Model model,
 			HttpServletRequest request) {
+		List<Department> departmentList = departmaentDAO.getDepartmentList();
 		Employee employee = employeeDAO.getEmployee(employeeID);
 		model.addAttribute("employee", employee);
+		model.addAttribute("departmentList", departmentList);
 
-		if (getUserFromSession(request).getEmployee().getId().equals(employeeID)) {
+		if (getUserFromSession(request).getEmployee().getId()
+				.equals(employeeID)) {
 			return "forward:/app/myprofile";
 		} else {
 			return "employeeDetails";
@@ -47,12 +50,9 @@ public class EmployeeController extends AbstractController {
 		Department department = employee.getDepartment();
 		if (department.getId() == null) {
 			employee.setDepartment(null);
-		} else {
-			employee.setManagerID(department.getDepartmentManagerID());
 		}
-		
 		employeeDAO.updateEmployee(employee);
-		return "employeeDetails";
+		return "redirect:/app/employeeDetails/?employeeID=" + employeeID;
 	}
 
 	@RequestMapping(value = "actions/hireNew", method = RequestMethod.GET)
@@ -65,9 +65,10 @@ public class EmployeeController extends AbstractController {
 	}
 
 	@RequestMapping(value = "actions/addNewEmployee", method = RequestMethod.POST)
-	public String insertNewEmployee(@ModelAttribute Employee employee, Model model) {
+	public String insertNewEmployee(@ModelAttribute Employee employee,
+			Model model) {
 		User user = new User();
-		user.setLogin(employee.getFirstName() + "_" + employee.getLastName());		
+		user.setLogin(employee.getFirstName() + "_" + employee.getLastName());
 		user.setPassword(Config.getValue("def.password"));
 		user.setUserRole(String.valueOf(UserRole.EMPLOYEE));
 		user.setEmployee(employee);
@@ -75,14 +76,13 @@ public class EmployeeController extends AbstractController {
 		Department department = employee.getDepartment();
 		if (department.getId() == null) {
 			employee.setDepartment(null);
-		} else {
-			employee.setManagerID(department.getDepartmentManagerID());
 		}
 
 		if (!(userDAO.isExist(user))) {
 			Long id = userDAO.createUser(user);
 			user = userDAO.getUser(id);
-			return "redirect:/app/employeeDetails/?employeeID=" + user.getEmployee().getId();
+			return "redirect:/app/employeeDetails/?employeeID="
+					+ user.getEmployee().getId();
 		} else {
 			model.addAttribute("employee", employee);
 			return "hireNewEmployeeError";
@@ -94,7 +94,7 @@ public class EmployeeController extends AbstractController {
 			@RequestParam long employeeID) {
 		User user = userDAO.getUser(employeeID);
 		userDAO.deleteUser(user);
-		
+
 		return "redirect:/app/employees";
 	}
 }
