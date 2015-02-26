@@ -1,4 +1,4 @@
 javaee
 ======
 
-The repository for test java ee projects
+JavaEE Course final project. 
